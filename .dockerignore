@@ -1,0 +1,28 @@
+# directories
+**/bin/
+**/obj/
+**/out/
+**/mssql/
+**/web/root/
+
+# files
+Dockerfile*
+*.md
+**/*.md
+.env
+
+# exceptions
+!**/wwwroot/
+!**/wwwroot/**
+!**/wwwroot/**/*
+!**/wwwroot/**/**/*
+
+# ignore
+**/node_modules/
+**/bower_components/
+**/packages/
+**/artifacts/
+**/logs/*
+**/Data/*
+**/Data/**/*
+**/Data/**/**/*
