@@ -26,4 +26,4 @@ EXPOSE 44461 44462
 COPY --from=build /root/.dotnet/corefx/cryptography/x509stores/my/* /root/.dotnet/corefx/cryptography/x509stores/my/
 COPY --from=publish /app/publish .
 
-ENTRYPOINT ["dotnet" "Identity.dll"]
+ENTRYPOINT ["dotnet", "Identity.dll"]
