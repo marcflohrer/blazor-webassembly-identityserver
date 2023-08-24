@@ -22,7 +22,7 @@ builder.Services.AddAuthentication(options =>
     })
     .AddOpenIdConnect("oidc", options =>
     {
-        options.Authority = $"https://{authorityUrl}:5001";
+        options.Authority = $"http://{authorityUrl}:5000";
         options.ReturnUrlParameter = "https://localhost:7190/fetchdata";
 
         options.ClientId = "interactive.confidential";
@@ -57,9 +57,8 @@ else
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+    app.UseHttpsRedirection();
 }
-
-app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
