@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 builder.Services.AddBff();
-
+var authorityUrl = builder.Configuration.GetValue<string>("ASSIGNED_IPADDRESS");
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = "cookie";
@@ -22,9 +22,9 @@ builder.Services.AddAuthentication(options =>
     })
     .AddOpenIdConnect("oidc", options =>
     {
-        options.Authority = "https://localhost:5001";
+        options.Authority = $"https://{authorityUrl}:5001";
         options.ReturnUrlParameter = "https://localhost:7190/fetchdata";
-        
+
         options.ClientId = "interactive.confidential";
         options.ClientSecret = "secret";
         options.ResponseType = "code";

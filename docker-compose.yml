@@ -12,6 +12,7 @@ services:
             - ./Server/web/root/.aspnet/DataProtection-Keys:/root/.aspnet/DataProtection-Keys:rw
             - ./Server/Data/logs:/app/logs
         environment:
+            ASSIGNED_IPADDRESS: ${AssignedIPAddress}
             DOTNET_CLI_TELEMETRY_OPTOUT: 1
             ASPNETCORE_HTTPS_PORT: 44462
             ASPNETCORE_URLS: http://+:44461;https://+:44462
@@ -42,7 +43,7 @@ services:
             DOTNET_TC_QuickJitForLoops: 1
             DOTNET_TieredCompilation: 1
             DOTNET_TC_QuickJit: 1
-            ASPNETCORE_ENVIRONMENT: Development
+            ASPNETCORE_ENVIRONMENT: Staging
             ASPNETCORE_URLS: http://+:5000;https://+:5001
             ConnectionStrings__DefaultConnection: "${DatabaseConnectionString}"
         depends_on:
