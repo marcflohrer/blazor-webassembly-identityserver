@@ -9,6 +9,8 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddBff();
 var authorityUrl = builder.Configuration.GetValue<string>("ASSIGNED_IPADDRESS");
+var IsDevelopment = builder.Environment.IsDevelopment();
+var authorityProtocol = IsDevelopment ? "http" : "https";
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = "cookie";
@@ -22,7 +24,8 @@ builder.Services.AddAuthentication(options =>
     })
     .AddOpenIdConnect("oidc", options =>
     {
-        options.Authority = $"http://{authorityUrl}:5000";
+        options.Authority = $"{authorityProtocol}://{authorityUrl}:5000";
+        options.RequireHttpsMetadata = !IsDevelopment;
         options.ReturnUrlParameter = "https://localhost:7190/fetchdata";
 
         options.ClientId = "interactive.confidential";
