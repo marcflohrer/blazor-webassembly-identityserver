@@ -478,3 +478,4 @@ $RECYCLE.BIN/
 .env
 *.sql
 **/logs/*
+Identity/keys/*.json
