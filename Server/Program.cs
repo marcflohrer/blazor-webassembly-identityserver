@@ -6,7 +6,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-
 builder.Services.AddBff();
 var authorityUrl = builder.Configuration.GetValue<string>("ASSIGNED_IPADDRESS");
 var IsDevelopment = builder.Environment.IsDevelopment();
