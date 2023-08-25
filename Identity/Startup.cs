@@ -27,6 +27,8 @@ namespace Identity
         public void ConfigureServices(IServiceCollection services)
         {
             var assignedIpAddress = Configuration.GetValue<string>("ASSIGNED_IPADDRESS");
+            
+            Console.WriteLine($"Connection String used is: {Configuration.GetConnectionString("DefaultConnection")}");
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));

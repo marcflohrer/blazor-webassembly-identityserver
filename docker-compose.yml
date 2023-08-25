@@ -57,7 +57,8 @@ services:
         cap_add:
             - SYS_PTRACE
         ports:
-            - "1434:1433"
+            # Map internal port 1433 to outside port 1434
+            - "1433:1434"
         volumes:
             - ./Identity/data/mssql/data/:/var/opt/mssql/data
         environment:
