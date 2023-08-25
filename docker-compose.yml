@@ -37,6 +37,7 @@ services:
             - ./Server/web/root/.aspnet/DataProtection-Keys:/root/.aspnet/DataProtection-Keys:rw
             - ./Identity/Data/logs:/app/logs
         environment:
+            ASSIGNED_IPADDRESS: ${AssignedIPAddress}
             DOTNET_CLI_TELEMETRY_OPTOUT: 1
             DOTNET_RUNNING_IN_CONTAINER: true
             DOTNET_TieredPGO: 1

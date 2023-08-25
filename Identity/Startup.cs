@@ -26,6 +26,7 @@ namespace Identity
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var assignedIpAddress = Configuration.GetValue<string>("ASSIGNED_IPADDRESS");
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -46,8 +47,8 @@ namespace Identity
                         ClientSecrets = { new Secret("secret".Sha256()) },
                         AllowedGrantTypes = GrantTypes.Code,
                         FrontChannelLogoutUri = "https://localhost:7190/signout-oidc",
-                        RedirectUris = { "https://localhost:7190/signin-oidc", "https://localhost:7191/signin-oidc" },
-                        PostLogoutRedirectUris = { "https://localhost:7190/signout-callback-oidc", "https://localhost:7191/signout-callback-oidc" },
+                        RedirectUris = { "https://localhost:7190/signin-oidc", "https://localhost:7191/signin-oidc", $"https://{assignedIpAddress}:44462/signin-oidc" },
+                        PostLogoutRedirectUris = { "https://localhost:7190/signout-callback-oidc", "https://localhost:7191/signout-callback-oidc", $"https://{assignedIpAddress}:44462/signin-oidc" },
                         AllowOfflineAccess = true,
                         AllowedScopes = new List<string>
                         {
