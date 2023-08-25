@@ -10,6 +10,10 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.10" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.10" />
 		<PackageReference Include="Duende.BFF" Version="2.1.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		  <PrivateAssets>all</PrivateAssets>
+		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Client\BlazorWasm.Client.csproj" />
