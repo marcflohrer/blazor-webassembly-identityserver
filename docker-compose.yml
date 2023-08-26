@@ -54,8 +54,6 @@ services:
         user: root
         container_name: "investordb"
         restart: always
-        cap_add:
-            - SYS_PTRACE
         ports:
             # Map TCP port 1433 in the container to port 1434 on the host for SQL Server
             - "1434:1433"
@@ -65,4 +63,4 @@ services:
             MSSQL_SA_PASSWORD: ${DatabasePassword}
             ACCEPT_EULA: 1
             MSSQL_PID: Developer
-            MSSQL_TCP_PORT: 1433
+
