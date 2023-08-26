@@ -27,11 +27,9 @@ namespace Identity
         public void ConfigureServices(IServiceCollection services)
         {
             var assignedIpAddress = Configuration.GetValue<string>("ASSIGNED_IPADDRESS");
-            
-            Console.WriteLine($"Connection String used is: {Configuration.GetConnectionString("DefaultConnection")}");
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            Console.WriteLine($"Connection String used is: {connectionString}");
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
