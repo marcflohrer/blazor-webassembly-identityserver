@@ -35,7 +35,12 @@ namespace Identity
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
 
-            services.AddIdentityServer()
+            services.AddIdentityServer(options =>
+                {
+                    options.Events.RaiseSuccessEvents = true;
+                    options.Events.RaiseFailureEvents = true;
+                    options.Events.RaiseErrorEvents = true;
+                })
                 .AddInMemoryApiScopes(new List<ApiScope>()
                 {
                     new ApiScope(){ Name = "api", DisplayName = "API", ShowInDiscoveryDocument = true }
