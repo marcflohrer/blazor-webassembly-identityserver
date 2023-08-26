@@ -46,9 +46,9 @@ namespace Identity
                         ClientId = "interactive.confidential",
                         ClientSecrets = { new Secret("secret".Sha256()) },
                         AllowedGrantTypes = GrantTypes.Code,
-                        FrontChannelLogoutUri = "https://{assignedIpAddress}:44462/signout-oidc",
-                        RedirectUris = { $"https://{assignedIpAddress}:44462/fetchdata" },
-                        PostLogoutRedirectUris = { $"https://{assignedIpAddress}:44462/signin-oidc", $"https://{assignedIpAddress}:44462/signin-oidc" },
+                        FrontChannelLogoutUri = "https://localhost:7190/signout-oidc",
+                        RedirectUris = { "https://localhost:7190/signin-oidc", "https://localhost:7191/signin-oidc", $"https://{assignedIpAddress}:44462/signin-oidc" },
+                        PostLogoutRedirectUris = { "https://localhost:7190/signout-callback-oidc", "https://localhost:7191/signout-callback-oidc", $"https://{assignedIpAddress}:44462/signin-oidc" },
                         AllowOfflineAccess = true,
                         AllowedScopes = new List<string>
                         {
