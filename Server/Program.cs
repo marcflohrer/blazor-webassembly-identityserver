@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.IdentityModel.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,12 +21,18 @@ builder.Services.AddAuthentication(options =>
     {
         options.Cookie.Name = "__Host-blazor";
         options.Cookie.SameSite = SameSiteMode.Strict;
+        // add an instance of the patched manager to the options:
+        options.CookieManager = new ChunkingCookieManager();
+
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SameSite = SameSiteMode.None;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     })
     .AddOpenIdConnect("oidc", options =>
     {
         options.Authority = $"{authorityProtocol}://{authorityUrl}:5000";
         options.RequireHttpsMetadata = !IsDevelopment;
-        options.ReturnUrlParameter = "https://localhost:7190/fetchdata";
+        options.ReturnUrlParameter = $"https://{authorityUrl}:44462/fetchdata";
 
         options.ClientId = "interactive.confidential";
         options.ClientSecret = "secret";
