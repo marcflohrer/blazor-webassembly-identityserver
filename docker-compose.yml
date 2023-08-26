@@ -60,7 +60,7 @@ services:
             # Map TCP port 1433 in the container to port 1434 on the host for SQL Server
             - "1434:1433"
         volumes:
-            - ./Identity/data/mssql/data/:/var/opt/mssql/data
+            - ./Identity/Data/mssql/data/:/var/opt/mssql/data
         environment:
             MSSQL_SA_PASSWORD: ${DatabasePassword}
             ACCEPT_EULA: 1
