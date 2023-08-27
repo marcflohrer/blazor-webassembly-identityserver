@@ -1,3 +1,5 @@
+Work in progress!
+
 # Project Description
 
 This is a template project designed to expedite the setup process for side projects. It aims to minimize boilerplate code and infrastructure concerns, allowing developers to focus on business logic.
